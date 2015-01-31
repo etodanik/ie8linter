@@ -7,4 +7,10 @@ Unfortunately for some of us, there are still projects out there that require co
 
 Right now this is still in development, but if you wanna see what it does already, `git clone` it, and then run `npm install` and then `node main.js`. It should be running on `http://localhost:3000/`.
 
+## Contributing
 Feel free to contribute your "favorite" pitfall or bug in the issues section or as a pull request (as of now the source code isn't very heavily commented, sorry about that).
+
+I'd love to hear about suggestions of common pitfalls, useful polyfills and problems you had with IE8 you wish would have been caught by a linter automatically
+
+You can always drop me a line here:
+dannypovolotski@gmail.com
