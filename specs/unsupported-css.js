@@ -25,6 +25,10 @@ var unsupported = {
     {
       value: 'rem',
       solution: 'You can change the value to px or em, or give this polyfill a try: https://github.com/chuckcarpenter/REM-unit-polyfill'
+    },
+    {
+      value: 'rgba',
+      solution: 'rgba() is not supported. Read more here: http://css-tricks.com/rgba-browser-support/'
     }
   ],
   'empty-cells': [
