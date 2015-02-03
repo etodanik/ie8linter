@@ -20,11 +20,13 @@ body
           div.col-md-2
             button.btn.btn-default.btn-lg.btn-block(type="submit") Submit
   div.container
-    if problems
-      each problem in problems
-        div.panel.panel-default
-          div.panel-heading #{problem.problem}
-          if problem.solution
-            div.panel-body #{problem.solution}
+    div.row
+      if problems
+        each problem in problems
+          div.panel.panel-default
+            div.panel-heading #{problem.problem}
+            if problem.solution
+              div.panel-body #{problem.solution}
   script(src='/js/jquery-2.1.3.min.js')
   script(src='/js/bootstrap.min.js')
+  script(src='/js/script.js')
