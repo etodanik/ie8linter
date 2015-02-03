@@ -1,0 +1,18 @@
+header{
+  background: #2672EC;
+  padding: 3.5em 0;
+  margin-bottom: 1.5em;
+  background-image: url(/images/IE10_icon_50.png);
+  background-repeat: no-repeat;
+  background-position: center right;
+}
+
+.ie-logo img{
+  margin: 1em auto;
+  width: 100%;
+  display: block;
+}
+
+.linter-form{
+  color: #fff;
+}

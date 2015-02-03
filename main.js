@@ -6,6 +6,10 @@ var specs = ls('./specs/*.js');
 var jade = require('jade');
 var express = require('express');
 var app = express();
+var path = require('path');
+
+// serve static files
+app.use("/", express.static(path.join(__dirname, 'public')));
 
 var lintAddress = function(req, res, next){
   var url = /[(http(s)?):\/\/(www\.)?a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/;
@@ -36,7 +40,9 @@ var lintAddress = function(req, res, next){
       });
     });
   } else {
-    res.render('index.jade');
+    res.render('index.jade', {
+      address: ''
+    });
   }
 };
 

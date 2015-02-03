@@ -4,23 +4,27 @@ head
     meta(http-equiv='X-UA-Compatible', content='IE=edge')  
     meta(name='viewport', content='width=device-width, initial-scale=1')  
     title IE8 Linter
-    link(href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css', rel='stylesheet')
-    link(href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css', rel='stylesheet')
+    link(href='/css/bootstrap.min.css', rel='stylesheet')
+    link(href='/css/style.css', rel='stylesheet')
     style
       | html,body{height: 100%; width: 100%;}
 body
+  header 
+    div.container
+      form.linter-form.row 
+        h1 IE8 Linter
+        p Unfortunately for some of us, there are still projects out there that require compatability with our friendly dinosaur IE8. For these special occasions I made this little linter. What it does is spit all the usual suspects that cause incompatability and suggest fixes.
+        div.row
+          div.col-md-10
+            input.form-control.input-lg(type="text", id="address", name="address", placeholder="Enter URL of the page you want to lint", value="#{address}")
+          div.col-md-2
+            button.btn.btn-default.btn-lg.btn-block(type="submit") Submit
   div.container
-    h1 IE8 Linter
-    form.row
-      div.col-md-10
-        input.form-control(type="text", id="address", name="address", placeholder="Enter URL of the page you want to lint", value="#{address}")
-      div.col-md-2
-        button.btn.btn-default.btn-block(type="submit") Submit
     if problems
       each problem in problems
         div.panel.panel-default
           div.panel-heading #{problem.problem}
           if problem.solution
             div.panel-body #{problem.solution}
-  script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js')
-  script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js')
+  script(src='/js/jquery-2.1.3.min.js')
+  script(src='/js/bootstrap.min.js')
