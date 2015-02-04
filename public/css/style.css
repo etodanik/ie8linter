@@ -1,6 +1,11 @@
-a.brand{
-  text-decoration: none;
+a{
   color: #fff;
+  text-decoration: underline;
+}
+
+a.brand, a.brand:hover{
+  color: #fff;
+  text-decoration: none;
 }
 
 .container{
@@ -25,4 +30,8 @@ header{
 
 .linter-form{
   color: #fff;
+}
+
+.shameless-plug{
+  margin-bottom: 1em;
 }
