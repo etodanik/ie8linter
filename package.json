@@ -1,6 +1,6 @@
 {
   "name": "ie8linter",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Try to figure out why a page doesn't work in an old version of IE",
   "main": "main.js",
   "scripts": {
