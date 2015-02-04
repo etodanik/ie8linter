@@ -1,10 +1,17 @@
 {
   "name": "ie8linter",
   "version": "0.0.2",
-  "description": "Try to figure out why a page doesn't work in an old version of IE",
+  "description": "A little linter server to try to figure out why a page doesn't work in an old version of IE",
   "main": "main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/israelidanny/ie8linter"
+  },
+  "bugs": {
+    "url": "https://github.com/israelidanny/ie8linter/issues"
   },
   "author": "Danny Povolotski <dannypovolotski@gmail.com>",
   "license": "MIT",
@@ -15,6 +22,7 @@
     "jade": "^1.9.1",
     "ls": "^0.1.0",
     "phantom": "^0.7.2",
+    "phantomjs": "^1.9.15",
     "request": "^2.51.0",
     "underscore": "^1.7.0"
   }
