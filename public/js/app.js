@@ -7,6 +7,12 @@ angular
     $scope.address;
     $scope.loading = false;
 
+    $scope.clear = function(){
+      $scope.address = '';
+      $location.search('address', null);
+      $scope.problems = [];
+    }
+
     $scope.init = function(){
       if($location.search().address){
         $scope.address = $location.search().address;
