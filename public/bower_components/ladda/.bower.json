@@ -1,0 +1,24 @@
+{
+  "name": "ladda",
+  "version": "0.9.7",
+  "main": [
+    "./dist/ladda.min.js",
+    "./dist/ladda.min.css"
+  ],
+  "ignore": [
+    "package.json"
+  ],
+  "dependencies": {
+    "spin.js": "~2.0.1"
+  },
+  "homepage": "https://github.com/hakimel/Ladda",
+  "_release": "0.9.7",
+  "_resolution": {
+    "type": "version",
+    "tag": "0.9.7",
+    "commit": "0d01de10fbc2914df558dec0ed260f874d60c084"
+  },
+  "_source": "git://github.com/hakimel/Ladda.git",
+  "_target": "~0.9.3",
+  "_originalSource": "ladda"
+}

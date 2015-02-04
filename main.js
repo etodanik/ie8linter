@@ -7,17 +7,36 @@ var jade = require('jade');
 var express = require('express');
 var app = express();
 var path = require('path');
+var urlPattern = /[(http(s)?):\/\/(www\.)?a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/;
 
 // serve static files
 app.use("/", express.static(path.join(__dirname, 'public')));
 
-var lintAddress = function(req, res, next){
-  var url = /[(http(s)?):\/\/(www\.)?a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/;
 
-  if(req.query.address && req.query.address.match(url)){
+
+var lintAddress = function(req, res, next){
+
+};
+
+
+app.get('/', function(req, res, next){
+  res.render('index.jade', {
+    address: req.query.address && req.query.address.match(urlPattern) ? req.query.address : ''
+  });
+});
+
+app.get('/lint/:address', function(req, res, next){
+  res.status(200).json({
+    success: true,
+    data: _.flatten(req.problems)
+  });
+});
+
+app.param('address', function(req, res, next, address){
+  if(address && address.match(urlPattern)){
     phantom.create(function (ph) {
       ph.createPage(function (page) {
-        page.open(req.query.address, function (status) {
+        page.open(address, function (status) {
           async.map(
             specs,
             function(spec, callback){
@@ -29,24 +48,19 @@ var lintAddress = function(req, res, next){
               });
             }, function(err, results){
               ph.exit();
-
-              res.render('index.jade', {
-                problems: _.flatten(results),
-                address: req.query.address
-              });
+              req.problems = _.flatten(results);
+              next();
             }
           );
         });
       });
     });
   } else {
-    res.render('index.jade', {
-      address: ''
+    res.status(400).json({
+      success: false,
+      error: "The address you entered doesn't look quite right."
     });
   }
-};
-
-
-app.get('/', lintAddress);
+});
 
 app.listen(3000);

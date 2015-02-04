@@ -1,0 +1,44 @@
+{
+  "name": "angular-ladda",
+  "version": "0.2.1",
+  "homepage": "https://github.com/remotty/angular-ladda",
+  "authors": [
+    "Chungsub Kim <subicura@subicura.com>"
+  ],
+  "description": "An angular directive wrapper for Ladda.",
+  "main": "dist/angular-ladda.min.js",
+  "keywords": [
+    "ladda",
+    "loading",
+    "button",
+    "angular",
+    "angularjs",
+    "directive"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "protractor.conf.js",
+    "gulpfile.js",
+    "bower_components",
+    "node_modules"
+  ],
+  "dependencies": {
+    "angular": ">= 1.2.0",
+    "ladda": "~0.9.3"
+  },
+  "devDependencies": {
+    "bootstrap": "~3.3.1",
+    "angular-bootstrap": "~0.12.0"
+  },
+  "_release": "0.2.1",
+  "_resolution": {
+    "type": "version",
+    "tag": "0.2.1",
+    "commit": "cec4076c9204c4a03718873065ad1c6beda22151"
+  },
+  "_source": "git://github.com/remotty/angular-ladda.git",
+  "_target": "~0.2.1",
+  "_originalSource": "angular-ladda",
+  "_direct": true
+}

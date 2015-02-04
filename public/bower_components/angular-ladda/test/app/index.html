@@ -1,0 +1,72 @@
+<!doctype html>
+<html ng-app="testApp">
+  <head>
+    <title>Default Title</title>
+    <link rel="stylesheet" href="/bower_components/ladda/dist/ladda-themeless.min.css">
+    <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.css">
+    <script src="/bower_components/ladda/dist/spin.min.js"></script>
+    <script src="/bower_components/ladda/js/ladda.js"></script>
+    <script src="/bower_components/angular/angular.js"></script>
+    <script src="/bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+    <script src="/src/angular-ladda.js"></script>
+    <script>
+      angular.module('testApp', ['angular-ladda', 'ui.bootstrap'])
+        .config(function () {
+          
+        })
+        .controller('TestController', ['$scope', '$timeout', '$modal', function($scope, $timeout, $modal) {
+          $scope.buttonText = "touch";
+          $scope.$rows = [{ id:1 }, { id:2 }];
+          $scope.loader1 = true;
+
+          $scope.openModal = function() {
+            $modal.open({
+              templateUrl: 'dialog.html',
+              controller: function ($scope, $modalInstance) {
+                $scope.ok = function () {
+                    $scope.loading = true;
+                }
+              },
+            });
+          };
+
+          $scope.signUp = function() {
+            $scope.laddaLoad = true
+          };
+
+          $timeout(function() {
+            $scope.loader = true;
+          }, 2000);
+        }]);
+    </script>
+  </head>
+  <body ng-controller="TestController">
+    <div ng-repeat="row in $rows">
+      <button id="loader{{ row.id }}" ladda="loader{{ row.id }}" class="btn btn-primary" ng-class="{ 'sample': true }">Action</button>
+    </div>
+    <div ng-repeat="row in $rows">
+      <a class="btn btn-primary" ladda="loader1">test</a>
+    </div>
+    <a class="btn btn-primary" ladda="loader1">test</a>
+    <a class="btn btn-primary" ladda="true" ng-if="loader1">test</a>
+    <a class="btn btn-primary" ladda="isLoading" ng-click="isLoading = true" ng-if="loader1">test</a>
+    <form role="form" name='signUpForm' novalidate ladda="laddaLoad">
+      <fieldset>
+        <legend>Create new account</legend>
+        <div class="form-group" show-errors>
+            <label class="control-label" for="email">Your email address</label>
+            <input id="email" name="email" type="email" ng-model="registrationData.email" class="form-control" required>
+            <p class="help-block" ng-if="signUpForm.email.$error.required">You need to fill your email address.</p>
+            <p class="help-block" ng-if="signUpForm.email.$error.email">Given email address is invalid.</p>
+        </div>
+      </fieldset>
+      <button class="btn btn-primary btn-block ladda-button" ng-click="signUp()">
+        Sign up
+      </button>
+    </form>
+    <a class="btn btn-primary" ladda="true" ng-if="loader">ng-if true</a>
+    <button id="btn" ladda="isLoading" ng-click="isLoading = true" class="btn btn-primary">{{ buttonText }}</button>
+    <button ladda="true" class="btn btn-primary">ladda button</button>
+    <a class="btn btn-primary" ng-click="openModal()">open modal</a>
+  </body>
+</html>

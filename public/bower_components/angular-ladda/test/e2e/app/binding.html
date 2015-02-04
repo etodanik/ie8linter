@@ -1,0 +1,27 @@
+<!doctype html>
+<html ng-app="testApp">
+  <head>
+    <title>Test</title>
+    <link rel="stylesheet" href="/bower_components/ladda/dist/ladda-themeless.min.css">
+    <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.css">
+    <script src="/bower_components/ladda/dist/spin.min.js"></script>
+    <script src="/bower_components/ladda/dist/ladda.min.js"></script>
+    <script src="/bower_components/angular/angular.js"></script>
+    <script src="/dist/angular-ladda.min.js"></script>
+    <script>
+      angular.module('testApp', ['angular-ladda'])
+        .config(function (laddaProvider) {
+
+        })
+        .controller('TestController', ['$scope', function($scope) {
+          $scope.$rows = [{ id:1 }, { id:2 }];
+          $scope.loader1 = true;
+        }]);
+    </script>
+  </head>
+  <body ng-controller="TestController">
+    <div ng-repeat="row in $rows">
+      <button ladda="loader{{ row.id }}" id="loader{{ row.id }}" class="btn btn-primary">Action</button>
+    </div>
+  </body>
+</html>

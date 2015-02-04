@@ -1,0 +1,36 @@
+<!doctype html>
+<html ng-app="testApp">
+  <head>
+    <title>Test</title>
+    <link rel="stylesheet" href="/bower_components/ladda/dist/ladda-themeless.min.css">
+    <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.css">
+    <script src="/bower_components/ladda/dist/spin.min.js"></script>
+    <script src="/bower_components/ladda/dist/ladda.min.js"></script>
+    <script src="/bower_components/angular/angular.js"></script>
+    <script src="/dist/angular-ladda.min.js"></script>
+    <script>
+      angular.module('testApp', ['angular-ladda'])
+        .config(function (laddaProvider) {
+
+        })
+        .controller('TestController', ['$scope', function($scope) {
+          
+        }]);
+    </script>
+  </head>
+  <body ng-controller="TestController">
+    <form role="form" name='signUpForm' novalidate ladda="laddaLoad">
+      <fieldset>
+        <legend>Create new account</legend>
+        <div class="form-group" show-errors>
+            <label class="control-label" for="email">Your email address</label>
+            <input id="email" name="email" type="email" ng-model="registrationData.email" class="form-control" required>
+            <p class="help-block" ng-if="signUpForm.email.$error.required">You need to fill your email address.</p>
+        </div>
+      </fieldset>
+      <button class="btn btn-primary btn-block ladda-button" ng-click="signUp()" class="btn btn-primary">
+        <span class="ladda-label">Sign up</span>
+      </button>
+    </form>
+  </body>
+</html>
