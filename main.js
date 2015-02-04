@@ -8,16 +8,13 @@ var express = require('express');
 var app = express();
 var path = require('path');
 var urlPattern = /[(http(s)?):\/\/(www\.)?a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/;
+var NodeCache = require('node-cache');
+var cache = new NodeCache({ stdTTL: 1800, checkperiod: 600 });
+var _ = require('lodash');
+var port = 3000;
 
 // serve static files
 app.use("/", express.static(path.join(__dirname, 'public')));
-
-
-
-var lintAddress = function(req, res, next){
-
-};
-
 
 app.get('/', function(req, res, next){
   res.render('index.jade', {
@@ -33,28 +30,38 @@ app.get('/lint/:address', function(req, res, next){
 });
 
 app.param('address', function(req, res, next, address){
+  var cached;
+
   if(address && address.match(urlPattern)){
-    phantom.create(function (ph) {
-      ph.createPage(function (page) {
-        page.open(address, function (status) {
-          async.map(
-            specs,
-            function(spec, callback){
-              require(spec.full)({
-                page: page,
-                status: status,
-                next: callback,
-                ph: ph
-              });
-            }, function(err, results){
-              ph.exit();
-              req.problems = _.flatten(results);
-              next();
-            }
-          );
+    cached = cache.get(address);
+
+    if(!_.isEmpty(cached)){
+      req.problems = cached[address];
+      next();
+    } else {
+      phantom.create(function (ph) {
+        ph.createPage(function (page) {
+          page.open(address, function (status) {
+            async.map(
+              specs,
+              function(spec, callback){
+                require(spec.full)({
+                  page: page,
+                  status: status,
+                  next: callback,
+                  ph: ph
+                });
+              }, function(err, results){
+                ph.exit();
+                req.problems = _.flatten(results);
+                cache.set(address, req.problems);
+                next();
+              }
+            );
+          });
         });
       });
-    });
+    }
   } else {
     res.status(400).json({
       success: false,
@@ -63,4 +70,5 @@ app.param('address', function(req, res, next, address){
   }
 });
 
-app.listen(3000);
+app.listen(port);
+console.log('Listening on port', port);
