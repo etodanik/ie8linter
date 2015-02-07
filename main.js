@@ -10,8 +10,7 @@ var path = require('path');
 var urlPattern = /[(http(s)?):\/\/(www\.)?a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/;
 var NodeCache = require('node-cache');
 var cache = new NodeCache({ stdTTL: 1800, checkperiod: 600 });
-var _ = require('lodash');
-var port = 3000;
+var port = 3170;
 
 // serve static files
 app.use("/", express.static(path.join(__dirname, 'public')));
