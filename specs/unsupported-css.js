@@ -44,9 +44,16 @@ function findInitialInCssText(text, callback){
   var i;
   var k;
   var problems = [];
-  var parsedStylesheet = css.parse(text);
 
-  checkRules(parsedStylesheet.stylesheet.rules, problems);
+  try{
+    var parsedStylesheet = css.parse(text);
+    checkRules(parsedStylesheet.stylesheet.rules, problems);
+  } catch (e){
+    problems.push({
+      problem: 'Error while parsing CSS: ' + e.toString(),
+      solution: 'Try checking your css to have good syntax, matching brackets e.t.c'
+    });
+  }
 
   callback(null, problems);
 };
