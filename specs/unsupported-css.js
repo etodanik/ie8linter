@@ -37,7 +37,7 @@ var unsupported = {
       solution: 'Internet Explorer does not support use of the empty-cells property'
     }
   ],
-  'display': ['inline-block', 'table', 'inline-table', 'table-cell']
+  'display': ['inline-table', 'table-cell']
 };
 
 function findInitialInCssText(text, callback){
