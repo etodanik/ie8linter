@@ -22,7 +22,7 @@ body(ng-app="ie8Linter", ng-controller="LinterCtrl", ng-init="init()")
         p.shameless-plug IE8 Linter is <a href="https://github.com/israelidanny/ie8linter" target="_blank">open source</a>, and is a love offering to you from <a href="mailto:dannypovolotski@gmail.com">Danny Povolotski</a>, whom you can <a href="mailto:dannypovolotski@gmail.com">hire right now</a> to work awesomeness on your project!
         div.row
           div.col-md-10
-            input.form-control.input-lg(type="text", id="address", name="address", placeholder="Enter URL of the page you want to lint", value="#{address}", ng-model="address")
+            input.form-control.input-lg(type="url", id="address", name="address", placeholder="Enter URL of the page you want to lint", value="#{address}", ng-model="address")
           div.col-md-2
             button.btn.btn-default.btn-lg.btn-block.ladda-button(type="submit", data-style="slide-right", ladda="loading") Submit
   div.container
