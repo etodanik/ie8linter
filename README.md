@@ -6,7 +6,7 @@ http://ie8.caffeine.co.il/
 
 ![Screenshot](https://raw.githubusercontent.com/israelidanny/ie8linter/master/screenshot.png)
 
-Unfortunately for some of us, there are still projects out there that require compatability with our friendly dinosaur IE8. For these special occasions I made this little linter. What it would do is spit all the usual suspects that cause incompatability and suggest fixes. Rather than scratch your head for hours about a missing navigation bar only to find you set an `initial` value on your `position` property in one of the multiple CSS files, just give it to the linter.
+Unfortunately for some of us, there are still projects out there that require compatibility with our friendly dinosaur IE8. For these special occasions I made this little linter. What it would do is spit all the usual suspects that cause incompatibility and suggest fixes. Rather than scratch your head for hours about a missing navigation bar only to find you set an `initial` value on your `position` property in one of the multiple CSS files, just give it to the linter.
 
 ## Installation
 - `git clone https://github.com/israelidanny/ie8linter.git`
