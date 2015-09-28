@@ -26,4 +26,4 @@ dannypovolotski@gmail.com
 
 Get help with ie8linter [on Codementor](https://www.codementor.io/danny?utm_source=github&utm_medium=link&utm_term=danny&utm_campaign=github).
 
-[![Contact me on Codementor](https://cdn.codementor.io/badges/contact_me_github.svg)](https://www.codementor.io/danny?utm_source=github&utm_medium=button&utm_term=danny&utm_campaign=github)
+[![Contact me on Codementor](https://cdn.codementor.io/badges/get_help_github.svg)](https://www.codementor.io/danny?utm_source=github&utm_medium=button&utm_term=danny&utm_campaign=github)
