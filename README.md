@@ -1,3 +1,6 @@
+# DEPRECATED
+This repository is deprecated and won't be maintained.
+
 # ie8linter
 A little tool to lint websites for IE8 compatibility, with warnings for possible pitfalls and suggested fixes.
 
